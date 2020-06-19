@@ -27,5 +27,7 @@ messaging.onMessage(function (payload) {
   console.log('message: ', payload)
 })
 
-
+messaging.setBackgroundMessageHandler(function (payload) {
+  console.log('backgroundMessage: ', payload)
+})
 
