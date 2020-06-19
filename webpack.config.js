@@ -7,7 +7,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'notify.js',
-    library: 'PatchSDK',
     publicPath: 'dist'
   },
   node: {
