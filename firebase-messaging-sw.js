@@ -36,19 +36,9 @@ messaging.setBackgroundMessageHandler(function (payload) {
       },
       {
         action: 'doughnut-action',
-        title: 'Doughnut',
+        title: 'Cuddle',
         icon: '/images/demos/action-2-128x128.png'
       },
-      {
-        action: 'gramophone-action',
-        title: 'gramophone',
-        icon: '/images/demos/action-3-128x128.png'
-      },
-      {
-        action: 'atom-action',
-        title: 'Atom',
-        icon: '/images/demos/action-4-128x128.png'
-      }
     ]
   };
     return self.registration.showNotification('some title from background', options)
