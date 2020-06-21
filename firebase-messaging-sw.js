@@ -26,10 +26,31 @@ messaging.setBackgroundMessageHandler(function (payload) {
   console.log('hey hit from the background handler')
   console.log(payload)
   if (Notification.permission === 'granted') {
-    const notificationObj = {
-      body: 'Hey this is hardcoded',
-  
-    }
-    return self.registration.showNotification('some title', notificationObj)
+    
+  const options = {
+    actions: [
+      {
+        action: 'coffee-action',
+        title: 'Coffee',
+        icon: '/images/demos/action-1-128x128.png'
+      },
+      {
+        action: 'doughnut-action',
+        title: 'Doughnut',
+        icon: '/images/demos/action-2-128x128.png'
+      },
+      {
+        action: 'gramophone-action',
+        title: 'gramophone',
+        icon: '/images/demos/action-3-128x128.png'
+      },
+      {
+        action: 'atom-action',
+        title: 'Atom',
+        icon: '/images/demos/action-4-128x128.png'
+      }
+    ]
+  };
+    return self.registration.showNotification('some title from background', options)
   }
 })
