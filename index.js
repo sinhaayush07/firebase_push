@@ -34,5 +34,5 @@ messaging.onMessage(function (payload) {
     body: payload.notification.body,
     title: payload.notification.title
   }
-  return new Notification(notifictionObj.title, notifictionObj.body)
+  return new Notification(notifictionObj.title, notifictionObj)
 })
