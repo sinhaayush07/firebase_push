@@ -47,7 +47,7 @@ function notifyMe() {
 
 
 
-messaging.setBackgroundMessageHandler(function (payolad) {
+messaging.setBackgroundMessageHandler(function (payload) {
   console.log(payload)
   const notification = {
     body: 'Hey this is hardcoded',
