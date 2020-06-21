@@ -30,9 +30,7 @@ messaging.requestPermission().then(res => {
 
 messaging.onMessage(function (payload) {
   console.log('message: ', payload)
-  let notifictionObj = {
-    body: payload.notification.body
-  }
+  console.log('v2')
   const options = {
     actions: [
       {
@@ -57,5 +55,7 @@ messaging.onMessage(function (payload) {
       }
     ]
   };
-  return new Notification(payload.title, options)
+  let not = new Notification(payload.title, options)
+  console.log(not)
+  return not
 })
