@@ -35,12 +35,19 @@ messaging.setBackgroundMessageHandler(function (payload) {
         icon: '/images/demos/action-1-128x128.png'
       },
       {
-        action: 'doughnut-action',
+        action: 'cuddle-action',
         title: 'Cuddle',
         icon: '/images/demos/action-2-128x128.png'
       },
     ]
   };
-    return self.registration.showNotification('some title from background', options)
+  self.registration.showNotification('some title from background', options)
   }
+  self.addEventListener('notificationClick', function (e) {
+    if(e.action === 'coffee-action') {
+      clients.openWindow('https://www.patchus.in').then(windowClient => windowClient ? windowClient.focus() : null)
+    } else if (e.action === 'cuddle-action') {
+      clients.openWindow('https://fuzzycatonlinecards.com.au/').then(windowClient => windowClient ? windowClient.focus() : null)
+    }
+  })
 })
