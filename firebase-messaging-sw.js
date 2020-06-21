@@ -48,6 +48,7 @@ function notifyMe() {
 
 
 messaging.setBackgroundMessageHandler(function (payload) {
+  console.log('hey hit from the background handler')
   console.log(payload)
   const notification = {
     body: 'Hey this is hardcoded',
