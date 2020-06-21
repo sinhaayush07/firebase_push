@@ -31,8 +31,7 @@ messaging.requestPermission().then(res => {
 messaging.onMessage(function (payload) {
   console.log('message: ', payload)
   let notifictionObj = {
-    body: payload.notification.body,
-    title: payload.notification.title
+    body: payload.notification.body
   }
-  return new Notification(notifictionObj.title, notifictionObj)
+  return new Notification(payload.title, notifictionObj)
 })
