@@ -30,27 +30,27 @@ messaging.setBackgroundMessageHandler(function (payload) {
   const options = {
     actions: [
       {
-        action: 'coffee-action',
-        title: 'Coffee',
+        action: 'see-cats',
+        title: 'Kittens',
         icon: '/images/demos/action-1-128x128.png'
       },
       {
-        action: 'cuddle-action',
-        title: 'Cuddle',
+        action: 'see-dogs',
+        title: 'Puppies',
         icon: '/images/demos/action-2-128x128.png'
       },
     ]
   };
   if (payload.body) {
-    options.body = payload.body
+    options.body = payload.message.body
   }
-  self.registration.showNotification('some title from background', options)
+  self.registration.showNotification(payload.message.title, options)
   }
   self.addEventListener('notificationclick', function (e) {
-    if(e.action === 'coffee-action') {
-      clients.openWindow('https://www.patchus.in').then(windowClient => windowClient ? windowClient.focus() : null)
-    } else if (e.action === 'cuddle-action') {
-      clients.openWindow('https://fuzzycatonlinecards.com.au/').then(windowClient => windowClient ? windowClient.focus() : null)
+    if(e.action === 'see-cats') {
+      clients.openWindow('https://unsplash.com/wallpapers/cute/kitten').then(windowClient => windowClient ? windowClient.focus() : null)
+    } else if (e.action === 'see-dogs') {
+      clients.openWindow('https://unsplash.com/wallpapers/cute/puppy').then(windowClient => windowClient ? windowClient.focus() : null)
     }
   })
 })
