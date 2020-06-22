@@ -41,6 +41,9 @@ messaging.setBackgroundMessageHandler(function (payload) {
       },
     ]
   };
+  if (payload.body) {
+    options.body = payload.body
+  }
   self.registration.showNotification('some title from background', options)
   }
   self.addEventListener('notificationclick', function (e) {
