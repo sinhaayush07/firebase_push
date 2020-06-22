@@ -43,7 +43,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
   };
   self.registration.showNotification('some title from background', options)
   }
-  self.addEventListener('notificationClick', function (e) {
+  self.addEventListener('notificationclick', function (e) {
     if(e.action === 'coffee-action') {
       clients.openWindow('https://www.patchus.in').then(windowClient => windowClient ? windowClient.focus() : null)
     } else if (e.action === 'cuddle-action') {
