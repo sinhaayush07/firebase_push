@@ -28,19 +28,8 @@ messaging.setBackgroundMessageHandler(function (payload) {
   if (Notification.permission === 'granted') {
     
   const options = {
-    body: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum`,
-    actions: [
-      {
-        action: 'see-cats',
-        title: 'Kittens',
-        icon: '/images/demos/action-1-128x128.png'
-      },
-      {
-        action: 'see-dogs',
-        title: 'Puppies',
-        icon: '/images/demos/action-2-128x128.png'
-      },
-    ]
+    body: payload.body,
+    actions: payload.actions
   };
   self.registration.showNotification('Sample Notification', options)
   }

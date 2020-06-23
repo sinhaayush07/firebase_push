@@ -31,7 +31,9 @@ messaging.requestPermission().then(res => {
 messaging.onMessage(function (payload) {
   console.log('message: ', payload)
   console.log('v2')
-  let not = new Notification(payload.title)
+  let not = new Notification(payload.data.title, {
+    body: payload.data.body
+  })
   console.log(not)
   return not
 })
