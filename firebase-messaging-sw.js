@@ -35,11 +35,12 @@ messaging.setBackgroundMessageHandler(function (payload) {
   })
 
   if (Notification.permission === 'granted') {
+    let title = payload.data.title
   const options = {
     body: payload.data.body,
     actions: payload.data.actions
   };
-  self.registration.showNotification(payload.data.title, options)
+  self.registration.showNotification(title, options)
 }
 
 
