@@ -25,14 +25,7 @@ const messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function (payload) {
   console.log('hey hit from the background handler')
   console.log(payload)
-  if (Notification.permission === 'granted') {
-    
-  const options = {
-    body: payload.data.body,
-    actions: payload.data.actions
-  };
-  self.registration.showNotification(payload.data.title, options)
-  }
+
   self.addEventListener('notificationclick', function (e) {
     if(e.action === 'see-cats') {
       clients.openWindow('https://unsplash.com/wallpapers/cute/kitten').then(windowClient => windowClient ? windowClient.focus() : null)
@@ -40,4 +33,14 @@ messaging.setBackgroundMessageHandler(function (payload) {
       clients.openWindow('https://unsplash.com/wallpapers/cute/puppy').then(windowClient => windowClient ? windowClient.focus() : null)
     }
   })
+
+  if (Notification.permission === 'granted') {
+  const options = {
+    body: payload.data.body,
+    actions: payload.data.actions
+  };
+  self.registration.showNotification(payload.data.title, options)
+}
+
+
 })
