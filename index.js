@@ -20,6 +20,7 @@ const messaging = firebase.messaging();
 messaging.requestPermission().then(res => {
   let div = document.createElement('div')
   div.id = 'permission'
+  messaging.hasPermission().then(res => console.log(res)).catch(err => console.log(err))
   div.innerHTML = messaging.hasPermission() + ''
   document.getElementsByTagName('body')[0].appendChild(div)
   messaging.getToken().then(res => {
