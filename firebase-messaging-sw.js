@@ -28,10 +28,10 @@ messaging.setBackgroundMessageHandler(function (payload) {
   if (Notification.permission === 'granted') {
     
   const options = {
-    body: payload.body,
-    actions: payload.actions
+    body: payload.data.body,
+    actions: payload.data.actions
   };
-  self.registration.showNotification('Sample Notification', options)
+  self.registration.showNotification(payload.data.title, options)
   }
   self.addEventListener('notificationclick', function (e) {
     if(e.action === 'see-cats') {
