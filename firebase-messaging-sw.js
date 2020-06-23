@@ -22,10 +22,6 @@ const messaging = firebase.messaging();
 
 
 
-messaging.setBackgroundMessageHandler(function (payload) {
-  console.log('hey hit from the background handler')
-  console.log(payload)
-
   self.addEventListener('notificationclick', function (e) {
     if(e.action === 'see-cats') {
       clients.openWindow('https://unsplash.com/wallpapers/cute/kitten').then(windowClient => windowClient ? windowClient.focus() : null)
@@ -34,13 +30,17 @@ messaging.setBackgroundMessageHandler(function (payload) {
     }
   })
 
+messaging.setBackgroundMessageHandler(function (payload) {
+  console.log('hey hit from the background handler')
+  console.log(payload)
+
   if (Notification.permission === 'granted') {
-    let title = payload.data.title
+    // let title = payload.data.title
   const options = {
     body: payload.data.body,
     actions: payload.data.actions
   };
-  self.registration.showNotification(title, options)
+  self.registration.showNotification('title', options)
 }
 
 
