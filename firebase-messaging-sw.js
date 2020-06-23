@@ -30,18 +30,16 @@ const messaging = firebase.messaging();
     }
   })
 
-messaging.setBackgroundMessageHandler(function (payload) {
-  console.log('hey hit from the background handler')
-  console.log(payload)
+  messaging.setBackgroundMessageHandler(function (payload) {
+    console.log('hey hit from the background handler')
+    console.log(payload)
 
-  if (Notification.permission === 'granted') {
-    // let title = payload.data.title
-  const options = {
-    body: payload.data.body,
-    actions: payload.data.actions
-  };
-  self.registration.showNotification('title', options)
-}
-
-
+    if (Notification.permission === 'granted') {
+      // let title = payload.data.title
+    const options = {
+      body: payload.data.body,
+      actions: payload.data.actions
+    };
+    self.registration.showNotification('title', options)
+  }
 })
