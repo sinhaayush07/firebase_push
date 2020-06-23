@@ -4,14 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-<script>var OneSignal = OneSignal || [];</script>
+<<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "fd7664cd-ee0b-4761-913a-78038ed98055",
+    });
+    console.log(OneSignal)
+  });
+</script>
   <title>Document</title>
 </head>
 <body>
   <h1 style="text-align: center">Hey Notifications</h1>
   <script>
-    console.log(OneSignal)
   </script>
   <!-- <script src="./dist/notify.js"></script> -->
 </body>
