@@ -2,6 +2,17 @@ import * as firebase from 'firebase'
 import "firebase/messaging";
 // let messaging = require('firebase/messaging')
 
+let div = document.createElement('div')
+div.id = 'support'
+if (firebase.messaging.isSupported()) {
+  div.innerHTML = 'Supported'
+  document.getElementsByTagName('body')[0].appendChild(div)
+} else {
+  div.innerHTML = 'Not Supported'
+  document.getElementsByTagName('body')[0].appendChild(div)
+}
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyBsPZn6aBALjZVq9m9_78CAYjbSiOeL6pI",
   authDomain: "testing-notifications-7313f.firebaseapp.com",
@@ -18,6 +29,7 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 messaging.requestPermission().then(res => {
+  console.log(res)
   let div = document.createElement('div')
   div.id = 'permission'
   // messaging.hasPermission().then(res => console.log(res)).catch(err => console.log(err))
