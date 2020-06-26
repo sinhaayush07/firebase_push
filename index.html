@@ -25,6 +25,7 @@
       console.log('hit')
       // Ensure that the user can receive Safari Push Notifications.
       if ('safari' in window && 'pushNotification' in window.safari) {
+        console.log('hit inside safari permission')
         var permissionData = window.safari.pushNotification.permission('web.app.netlify.830892-.heyrovsky.infalliable');
         checkRemotePermission(permissionData);
       }
