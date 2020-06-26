@@ -26,13 +26,15 @@
       // Ensure that the user can receive Safari Push Notifications.
       if ('safari' in window && 'pushNotification' in window.safari) {
         console.log('hit inside safari permission')
-        var permissionData = window.safari.pushNotification.permission('web.app.netlify.830892-.heyrovsky.infalliable');
+        var permissionData = window.safari.pushNotification.permission('https://infallible-heyrovsky-830892.netlify.app');
         checkRemotePermission(permissionData);
       }
     };
 
     var checkRemotePermission = function (permissionData) {
+      console.log('hit inside checkRemotePermisssion')
       if (permissionData.permission === 'default') {
+        console.log('hit inside  default mode')
         // This is a new web service URL and its validity is unknown.
         window.safari.pushNotification.requestPermission(
           'https://pushservice.patchus.in/push', // The web service URL.
