@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-<<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<!-- <<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script> -->
 <script>
   window.OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
@@ -19,6 +19,31 @@
 <body>
   <h1 style="text-align: center">Hey Notifications</h1>
   <script>
+    var p = document.getElementById("foo");
+    p.onclick = function () {
+      // Ensure that the user can receive Safari Push Notifications.
+      if ('safari' in window && 'pushNotification' in window.safari) {
+        var permissionData = window.safari.pushNotification.permission('web.app.netlify.830892-.heyrovsky.infalliable');
+        checkRemotePermission(permissionData);
+      }
+    };
+
+    var checkRemotePermission = function (permissionData) {
+      if (permissionData.permission === 'default') {
+        // This is a new web service URL and its validity is unknown.
+        window.safari.pushNotification.requestPermission(
+          'https://pushservice.patchus.in/push', // The web service URL.
+          'web.app.netlify.830892-.heyrovsky.infalliable', // The Website Push ID.
+          {}, // Data that you choose to send to your server to help you identify the user.
+          checkRemotePermission // The callback function.
+        );
+      } else if (permissionData.permission === 'denied') {
+        // The user said no.
+      } else if (permissionData.permission === 'granted') {
+        // The web service URL is a valid push provider, and the user said yes.
+        // permissionData.deviceToken is now available to use.
+      }
+    };
   </script>
   <!-- <script src="./dist/notify.js"></script> -->
 </body>
