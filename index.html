@@ -26,7 +26,7 @@
       // Ensure that the user can receive Safari Push Notifications.
       if ('safari' in window && 'pushNotification' in window.safari) {
         console.log('hit inside safari permission')
-        var permissionData = window.safari.pushNotification.permission('web.app.netlify.830892-.heyrovsky.infalliable');
+        var permissionData = window.safari.pushNotification.permission('https://pushservice.patchus.in/push/v2/pushPackages/web.app.netlify.830892-.heyrovsky.infalliable');
         checkRemotePermission(permissionData);
       }
     };
