@@ -27,6 +27,7 @@
       if ('safari' in window && 'pushNotification' in window.safari) {
         console.log('hit inside safari permission')
         var permissionData = window.safari.pushNotification.permission('https://infallible-heyrovsky-830892.netlify.app');
+        console.log(permissionData)
         checkRemotePermission(permissionData);
       }
     };
