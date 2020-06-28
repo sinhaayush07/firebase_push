@@ -35,10 +35,20 @@ messaging.setBackgroundMessageHandler(function (payload) {
   console.log(payload)
 
   if (Notification.permission === 'granted') {
-    let title = payload.data.title
+    let title = 'Appointment'
     const options = {
-      body: payload.data.body,
-      actions: payload.data.actions
+      body: 'Hey your call is in next 15 minutes',
+      actions: [{
+          "action": "see-cats",
+          "title": "Kittens",
+          "icon": "/images/demos/action-1-128x128.png"
+        },
+        {
+          "action": "see-dogs",
+          "title": "Puppies",
+          "icon": "/images/demos/action-2-128x128.png"
+        }
+      ]
     };
     console.log(options)
     self.registration.showNotification(title, options)
