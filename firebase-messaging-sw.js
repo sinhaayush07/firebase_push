@@ -22,23 +22,33 @@ const messaging = firebase.messaging();
 
 
 
-  self.addEventListener('notificationclick', function (e) {
-    if(e.action === 'see-cats') {
-      clients.openWindow('https://unsplash.com/wallpapers/cute/kitten').then(windowClient => windowClient ? windowClient.focus() : null)
-    } else if (e.action === 'see-dogs') {
-      clients.openWindow('https://unsplash.com/wallpapers/cute/puppy').then(windowClient => windowClient ? windowClient.focus() : null)
-    }
-  })
+self.addEventListener('notificationclick', function (e) {
+  if (e.action === 'see-cats') {
+    clients.openWindow('https://unsplash.com/wallpapers/cute/kitten').then(windowClient => windowClient ? windowClient.focus() : null)
+  } else if (e.action === 'see-dogs') {
+    clients.openWindow('https://unsplash.com/wallpapers/cute/puppy').then(windowClient => windowClient ? windowClient.focus() : null)
+  }
+})
 
-  messaging.setBackgroundMessageHandler(function (payload) {
-    console.log('hey hit from the background handler')
-    console.log(payload)
+messaging.setBackgroundMessageHandler(function (payload) {
+  console.log('hey hit from the background handler')
+  console.log(payload)
 
-    if (Notification.permission === 'granted') {
-      // let title = payload.data.title
+  if (Notification.permission === 'granted') {
+    // let title = payload.data.title
     const options = {
-      body: payload.data.body,
-      actions: payload.data.actions
+      body: 'payload.data.body',
+      actions: [{
+          "action": "see-cats",
+          "title": "Kittens",
+          "icon": "/images/demos/action-1-128x128.png"
+        },
+        {
+          "action": "see-dogs",
+          "title": "Puppies",
+          "icon": "/images/demos/action-2-128x128.png"
+        }
+      ]
     };
     console.log(options)
     self.registration.showNotification('title', options)
