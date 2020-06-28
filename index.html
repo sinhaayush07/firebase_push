@@ -19,39 +19,6 @@
 <body>
   <h1 style="text-align: center">Hey Notifications</h1>
   <button id="foo">Connect</button>
-  <script>
-    var p = document.getElementById("foo");
-    p.onclick = function () {
-      console.log('hit')
-      // Ensure that the user can receive Safari Push Notifications.
-      if ('safari' in window && 'pushNotification' in window.safari) {
-        console.log('hit inside safari permission')
-        var permissionData = window.safari.pushNotification.permission('https://infallible-heyrovsky-830892.netlify.app');
-        checkRemotePermission(permissionData);
-      }
-    };
-
-    var checkRemotePermission = function (permissionData) {
-      console.log(permissionData)
-      console.log('hit inside checkRemotePermisssion')
-      if (permissionData.permission === 'default') {
-        console.log('hit inside  default mode')
-        // This is a new web service URL and its validity is unknown.
-        window.safari.pushNotification.requestPermission(
-          'http://pushservice.patchus.in', // The web service URL.
-          'web.app.netlify.830892-.heyrovsky.infalliable', // The Website Push ID.
-          {}, // Data that you choose to send to your server to help you identify the user.
-          checkRemotePermission // The callback function.
-        );
-      } else if (permissionData.permission === 'denied') {
-        // The user said no.
-      } else if (permissionData.permission === 'granted') {
-        // The web service URL is a valid push provider, and the user said yes.
-        // permissionData.deviceToken is now available to use.
-        console.log('granted')
-      }
-    };
-  </script>
-  <!-- <script src="./dist/notify.js"></script> -->
+  <script src="./dist/notify.js"></script>
 </body>
 </html>
