@@ -40,6 +40,7 @@ const messaging = firebase.messaging();
       body: payload.data.body,
       actions: payload.data.actions
     };
+    console.log(options)
     self.registration.showNotification('title', options)
   }
 })
