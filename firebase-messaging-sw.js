@@ -35,22 +35,12 @@ messaging.setBackgroundMessageHandler(function (payload) {
   console.log(payload)
 
   if (Notification.permission === 'granted') {
-    // let title = payload.data.title
+    let title = payload.data.title
     const options = {
-      body: 'payload.data.body',
-      actions: [{
-          "action": "see-cats",
-          "title": "Kittens",
-          "icon": "/images/demos/action-1-128x128.png"
-        },
-        {
-          "action": "see-dogs",
-          "title": "Puppies",
-          "icon": "/images/demos/action-2-128x128.png"
-        }
-      ]
+      body: payload.data.body,
+      actions: payload.data.actions
     };
     console.log(options)
-    self.registration.showNotification('title', options)
+    self.registration.showNotification(title, options)
   }
 })
